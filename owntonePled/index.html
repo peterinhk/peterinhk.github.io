@@ -1,0 +1,140 @@
+<html>
+  <head>
+		<title>OwntonePled</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+			body {
+				border: 2px solid #ccc;
+			}
+
+			.flex-container {
+				height:99%;
+				width: 99%;
+				display: flex;
+			}
+
+			.flex-child {
+					flex: 1;
+					margin-top: 0.75%;
+				margin-left: 1%;
+				margin-bottom: 0.2%;
+				padding-top: 1%;
+				padding-left: 1%;
+					border: 1px solid #ccc;
+					overflow: scroll;
+			}
+
+			ul {
+				padding: 0.75%;
+			}
+
+			.playlist {
+				height: auto;
+				width: 95%;
+				max-height: 50%;
+				min-height: 10%;
+				border-top: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+				padding-left: 2.7%;
+				overflow: scroll;
+			}
+
+			.dragging {
+				background-color: #eee;
+			}
+
+			#searchInput {
+				width: 91%;
+				padding: .75%;
+				border: 1px solid #ddd;
+			}
+    </style>
+  </head>
+  <body>
+		<div class="flex-container">
+			<div class="flex-child">
+				<span>
+					<b>Songs</b>&nbsp&nbsp
+					<input type="text" id="searchInput" placeholder="Loading">
+				</span>
+				<ul id="Songs"></ul>
+			</div>
+			<div class="flex-child">
+				<span id="plSpan" hidden>
+					<b>Playlists</b>&nbsp&nbsp&nbsp&nbsp
+					<button id="newPlBtn">New playlist</button>&nbsp&nbsp
+					<button id="cancelPlBtn" hidden>Cancel</button>&nbsp&nbsp
+					<input id="newPlName" placeholder="Enter playlist name" hidden>
+					<button id="savePlBtn" hidden>Save changes</button>
+				</span>
+				</br></br>
+				<div id="Playlists"></div>
+			</div>
+		</div>
+  </body>
+	<script type="module">
+		import {addSongs, addPlaylists, newPlaylist, savePlaylists} from './songs3.mjs';
+
+		window.resizeTo(
+			window.screen.availWidth * .75,
+    	window.screen.availHeight * .75);
+
+		window.addEventListener("beforeunload", async function(e){
+			navigator.sendBeacon(`${window.location.href}api/pageclose`);
+		}, false);
+			
+		var playlists = [];
+
+		document.querySelector('#searchInput').addEventListener('keyup', function() {
+			for (const li of document.getElementById("Songs").getElementsByTagName("li")) {
+				li.hidden = li.innerText.includes(document.getElementById("searchInput").value) ? false : true;
+			}
+		});
+
+		document.querySelector('#newPlBtn').addEventListener('click', function(){
+			document.querySelector('#newPlBtn').hidden = true;
+			document.querySelector('#newPlName').hidden = false;
+			document.querySelector('#cancelPlBtn').hidden = false;
+		});
+
+		document.querySelector('#cancelPlBtn').addEventListener('click', function() {
+			document.querySelector('#newPlName').hidden = true;
+			document.querySelector('#cancelPlBtn').hidden = true;
+			document.querySelector('#newPlBtn').hidden = false;
+		});
+
+		document.querySelector('#newPlName').addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				newPlaylist(document.querySelector('#newPlName').value);
+				document.querySelector('#savePlBtn').hidden = false;
+				document.querySelector('#newPlName').hidden = true;
+				document.querySelector('#newPlBtn').hidden = false;
+				document.querySelector('#cancelPlBtn').hidden = true;
+			}
+		});
+
+		document.querySelector('#savePlBtn').addEventListener('click', savePlaylists);
+
+		const loaderArray = ['Loading', 'Loading .','Loading  .', 'Loading   .'];
+		let idx = 1;
+		const interval = setInterval(
+			() => {
+				document.querySelector('#searchInput').placeholder = loaderArray[idx];
+				idx = idx < 3 ? idx+1 : 0;
+			}, 500
+		);
+
+		(async function(){
+			try {
+				await addSongs(document.querySelector('#Songs'));
+				await addPlaylists(document.querySelector('#Playlists'));
+				clearInterval(interval);
+				document.querySelector('#plSpan').hidden = false;
+				document.querySelector('#searchInput').placeholder="Search for songs..."
+			} catch (e) {
+				console.error(`error: ${JSON.stringify(e, null, 2)}`);
+			}
+		})();
+	</script>
+</html>

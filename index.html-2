@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+</head>
+<body>
+    <ul>
+        <li><a href="https://games.home.int/2048">2048</a></li>
+        <li><a href="https://games.home.int/baccarat">Baccarat</a></li>
+        <li><a href="https://games.home.int/wordle">Wordle+</a></li>
+        <li><a href="https://games.home.int/skifree">SkiFree</a></li>
+        <li><a href="https://games.home.int/snake">Snake</a></li>
+        <li><a href="https://games.home.int/minesweeper">Mine Sweeper</a></li>
+        <li><a href="https://games.home.int/mahjong">Mahjong</a></li>
+        <li><a href="https://games.home.int/mahjong2">Mahjong Solitaire</a></li>
+        <li><a href="https://games.home.int/comet">Comet</a></li>
+        <li><a href="https://games.home.int/flappybird">Flappy Bird</a></li>
+        <li><a href="https://games.home.int/sudoku">Sudoku</a></li>
+        <li><a href="https://games.home.int/duckhunt">Duck Hunt</a></li>
+	<li><a href="https://games.home.int/connections">Connections</a></li>
+        <li><a href="https://games.home.int/typing-test/build">Typing Test</a></li>
+        <li><a href="https://games.home.int/quake">Quake</a></li>
+        <li><a href="https://games.home.int/doom">Doom</a></li>
+        <li><a href="https://games.home.int/angrybirds">Angry Birds</a></li>
+        <li><a href="https://games.home.int/tetris">Tetris</a></li>
+        <li><a href="https://games.home.int/worms">Worms</a></li>
+        <li><a href="https://games.home.int/pool">Pool</a></li>
+        <li><a href="https://games.home.int/pacman">PacMan</a></li>
+        <li><a href="https://games.home.int/pinball">Pinball</a></li>
+        <li><a href="https://games.home.int/chess">Chess</a></li>
+        <li><a href="https://games.home.int/spider">Spider Solitaire</a></li>
+        <li><a href="https://games.home.int/motoracer">Moto Racers</a></li>
+        <li><a href="https://games.home.int/jspaint">Paint</a></li>
+        <li><a href="https://games.home.int/piano">Mini Piano</a></li>
+        <li><a href="https://games.home.int/sqlite">SQLite</a></li>
+        <li><a href="https://games.home.int/worldle">Worldle</a></li>
+    </ul>
+</body>
+</html>

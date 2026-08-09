@@ -1,0 +1,178 @@
+[
+    {
+        "NAME": "STONE",
+        "RGB": [
+            147,
+            149,
+            152
+        ],
+        "HEX": "#939598",
+        "CMYK": [
+            0,
+            0,
+            0,
+            50
+        ],
+        "Pantone": "Cool Grey 7 C"
+    },
+    {
+        "NAME": "VIOLET",
+        "RGB": [
+            137,
+            127,
+            156
+        ],
+        "HEX": "#897f9c",
+        "CMYK": [
+            32,
+            36,
+            5,
+            26
+        ],
+        "Pantone": "4127C"
+    },
+    {
+        "NAME": "GERANIUM",
+        "RGB": [
+            176,
+            103,
+            103
+        ],
+        "HEX": "#b06767",
+        "CMYK": [
+            12,
+            60,
+            41,
+            23
+        ],
+        "Pantone": "4039C"
+    },
+    {
+        "NAME": "PALM LEAF",
+        "RGB": [
+            117,
+            145,
+            67
+        ],
+        "HEX": "#759143",
+        "CMYK": [
+            35,
+            0,
+            79,
+            38
+        ],
+        "Pantone": "7490C"
+    },
+    {
+        "NAME": "SUN GLOW",
+        "RGB": [
+            220,
+            173,
+            39
+        ],
+        "HEX": "#dcad27",
+        "CMYK": [
+            15,
+            31,
+            100,
+            0
+        ],
+        "Pantone": "2007C"
+    },
+    {
+        "NAME": "WILD CINNAMON",
+        "RGB": [
+            240,
+            79,
+            36
+        ],
+        "HEX": "#f04f24",
+        "CMYK": [
+            0,
+            84,
+            98,
+            0
+        ],
+        "Pantone": "172C"
+    },
+    {
+        "NAME": "BOUGAINVILLEA",
+        "RGB": [
+            234,
+            10,
+            140
+        ],
+        "HEX": "#ea0a8c",
+        "CMYK": [
+            1,
+            99,
+            1,
+            0
+        ],
+        "Pantone": "225C"
+    },
+    {
+        "NAME": "SEA GRAPE",
+        "RGB": [
+            117,
+            192,
+            67
+        ],
+        "HEX": "#75c043",
+        "CMYK": [
+            59,
+            0,
+            100,
+            0
+        ],
+        "Pantone": "360C"
+    },
+    {
+        "NAME": "WILD BANANA ORCHID",
+        "RGB": [
+            253,
+            183,
+            21
+        ],
+        "HEX": "#fdb715",
+        "CMYK": [
+            0,
+            31,
+            100,
+            0
+        ],
+        "Pantone": "1235C"
+    },
+    {
+        "NAME": "BLUE IGUANA",
+        "RGB": [
+            42,
+            172,
+            226
+        ],
+        "HEX": "#2aace2",
+        "CMYK": [
+            69,
+            14,
+            0,
+            0
+        ],
+        "Pantone": "298C"
+    },
+    {
+        "NAME": "SKY",
+        "RGB": [
+            77,
+            177,
+            201
+        ],
+        "HEX": "#4db1c9",
+        "CMYK": [
+            65,
+            11,
+            17,
+            0
+        ],
+        "Pantone": "7702C"
+    }
+]

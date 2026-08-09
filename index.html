@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<base href="https://games.pmajtech.uk/">-->
+    <title>Games</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        #search-box {
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+        li {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        a {
+            display: block;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            text-align: center;
+            border-radius: 8px;
+        }
+        a:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Games</h1>
+    <input type="text" id="search-box" placeholder="Search for a game...">
+    <ul id="game-list">
+        <li><a href="/2048">2048</a></li>
+        <li><a href="/baccarat">Baccarat</a></li>
+        <li><a href="/wordle">Wordle+</a></li>
+        <li><a href="/skifree">SkiFree</a></li>
+        <li><a href="/snake">Snake</a></li>
+        <li><a href="/minesweeper">Mine Sweeper</a></li>
+        <li><a href="/mahjong">Mahjong</a></li>
+        <li><a href="/mahjong2">Mahjong Solitaire</a></li>
+        <li><a href="/comet">Comet</a></li>
+        <li><a href="/flappybird">Flappy Bird</a></li>
+        <li><a href="/sudoku">Sudoku</a></li>
+        <li><a href="/duckhunt">Duck Hunt</a></li>
+	<li><a href="/connections">Connections</a></li>
+        <li><a href="/typing-test/build">Typing Test</a></li>
+        <li><a href="/quake">Quake</a></li>
+        <li><a href="/doom">Doom</a></li>
+        <li><a href="/angrybirds">Angry Birds</a></li>
+        <li><a href="/tetris">Tetris</a></li>
+        <li><a href="/worms">Worms</a></li>
+        <li><a href="/pool">Pool</a></li>
+        <li><a href="/pacman">PacMan</a></li>
+        <li><a href="/pinball">Pinball</a></li>
+        <li><a href="/chess">Chess</a></li>
+        <li><a href="/spider">Spider Solitaire</a></li>
+        <li><a href="/motoracer">Moto Racers</a></li>
+        <li><a href="/jspaint">Paint</a></li>
+        <li><a href="/piano">Mini Piano</a></li>
+        <li><a href="/sqlite">SQLite</a></li>
+        <li><a href="/worldle">Worldle</a></li>
+        <li><a href="/flagle">Flagle</a></li>
+	<li><a href="/StarCraft">StarCraft</a></li>
+	<li><a href="/vxp">WinXP</a></li>
+	<li><a href="/mac">MacOS</a></li>
+	<li><a href="/w95">Windows 95</a></li>
+	<li><a href="/nes">Nintendo</a></li>
+	<li><a href="/LemmingsJS">Lemmings</a></li>
+    </ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gameList = document.getElementById('game-list');
+            const listItems = Array.from(gameList.getElementsByTagName('li'));
+
+            // Sort the list alphabetically
+            listItems.sort((a, b) => {
+                const textA = a.textContent.toUpperCase();
+                const textB = b.textContent.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
+
+            // Re-append sorted items
+            listItems.forEach(item => gameList.appendChild(item));
+
+            // Filter functionality
+            const searchBox = document.getElementById('search-box');
+            searchBox.addEventListener('keyup', () => {
+                const filter = searchBox.value.toUpperCase();
+                listItems.forEach(item => {
+                    const a = item.getElementsByTagName('a')[0];
+                    const txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        item.style.display = "";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
