@@ -14,4 +14,6 @@ canvas {
     background: #eee;
     display: block;
     margin: auto auto;
+    max-width: 100%;
+    height: auto;
 }

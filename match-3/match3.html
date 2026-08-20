@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Rembound.com Example</title>
+<script type='text/javascript' src='match3-example.js'></script>
+<style>
+  body { margin: 0; display: flex; justify-content: center; }
+  canvas { max-width: 100%; height: auto; touch-action: none; }
+</style>
+</head>
+<body>
+<canvas id="viewport" width="640" height="480"></canvas>
+<script>
+  (function () {
+    var canvas = document.getElementById('viewport');
+    function relay(touchEvent, mouseType) {
+      var touch = touchEvent.changedTouches[0];
+      var mouseEvent = new MouseEvent(mouseType, {
+        bubbles: true,
+        cancelable: true,
+        clientX: touch.clientX,
+        clientY: touch.clientY,
+        button: 0
+      });
+      touchEvent.preventDefault();
+      touch.target.dispatchEvent(mouseEvent);
+    }
+    canvas.addEventListener('touchstart', function (e) { relay(e, 'mousedown'); }, { passive: false });
+    canvas.addEventListener('touchmove', function (e) { relay(e, 'mousemove'); }, { passive: false });
+    canvas.addEventListener('touchend', function (e) { relay(e, 'mouseup'); }, { passive: false });
+    canvas.addEventListener('touchcancel', function (e) { relay(e, 'mouseup'); }, { passive: false });
+  })();
+</script>
+</body>
+</html>
