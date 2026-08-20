@@ -1,0 +1,68 @@
+html {
+  font-size: 62.5%; /* base 10 */
+}
+
+body {
+  background-color: #444;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #eee;
+  font-family: Helvetica, Arial;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  font-size: 0;
+  margin: 0 auto;
+  max-height: 748px;
+  max-width: 1024px;
+  text-align: center;
+}
+
+noscript {
+  font-size: 16px;
+}
+
+#game {
+  display: inline-block;
+  position: relative;
+  -moz-user-select: -moz-none; /* For Firefox 20 and below  */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.touch-control {
+  height: 45%;
+  position: absolute;
+  width: 20%;
+}
+
+#player1-up {
+  left: 0;
+  top: 0;
+}
+
+#player1-down {
+  bottom: 0;
+  left: 0;
+}
+
+#player2-up {
+  right: 0;
+  top: 0;
+}
+
+#player2-down {
+  bottom: 0;
+  right: 0;
+}
+
+#screen {
+  border: 0;
+  display: none;
+}
