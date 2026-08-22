@@ -43,3 +43,11 @@ h3{
 .flash {
     background-color: white;
 }
+
+@media (max-width: 480px) {
+    .btn {
+        width: 38vw;
+        height: 38vw;
+        margin: 0.5rem;
+    }
+}

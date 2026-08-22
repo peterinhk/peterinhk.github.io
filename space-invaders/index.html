@@ -2,10 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Space Invaders Demo</title>
     <script src="js/game.js"></script>
+    <style>
+      body { margin: 0; }
+      canvas { max-width: 100vw; height: auto; display: block; }
+      #touch-controls {
+        display: none;
+      }
+      @media (pointer: coarse) {
+        #touch-controls {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 16px;
+          box-sizing: border-box;
+          pointer-events: none;
+          z-index: 10;
+        }
+        #touch-controls > div {
+          display: flex;
+          gap: 12px;
+          pointer-events: auto;
+        }
+        .touch-btn {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          background: rgba(0, 0, 0, 0.15);
+          border: 2px solid rgba(0, 0, 0, 0.5);
+          color: #000;
+          font: bold 22px sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: none;
+        }
+        .touch-btn:active {
+          background: rgba(0, 0, 0, 0.35);
+        }
+        #touch-fire {
+          width: 84px;
+          height: 84px;
+          font-size: 14px;
+        }
+      }
+    </style>
 </head>
 <body>
-    
+
+<div id="touch-controls">
+  <div>
+    <div class="touch-btn" data-keycode="37">&#8592;</div>
+    <div class="touch-btn" data-keycode="39">&#8594;</div>
+  </div>
+  <div>
+    <div class="touch-btn" id="touch-fire" data-keycode="32">FIRE</div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    function fireKey(type, keyCode) {
+      var evt = new KeyboardEvent(type, { bubbles: true, cancelable: true });
+      Object.defineProperty(evt, 'keyCode', { get: function () { return keyCode; } });
+      Object.defineProperty(evt, 'which', { get: function () { return keyCode; } });
+      window.dispatchEvent(evt);
+    }
+    document.querySelectorAll('.touch-btn').forEach(function (btn) {
+      var keyCode = parseInt(btn.getAttribute('data-keycode'), 10);
+      var press = function (e) { e.preventDefault(); fireKey('keydown', keyCode); };
+      var release = function (e) { e.preventDefault(); fireKey('keyup', keyCode); };
+      btn.addEventListener('touchstart', press, { passive: false });
+      btn.addEventListener('touchend', release, { passive: false });
+      btn.addEventListener('touchcancel', release, { passive: false });
+    });
+  })();
+</script>
 </body>
 </html>
