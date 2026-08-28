@@ -274,6 +274,85 @@
   .ticket-total-row { display: flex; justify-content: space-between; font-family: var(--font-display); font-size: var(--fs-md); border-top: 1px solid var(--line); padding-top: var(--space-2); }
   .ticket-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
 
+  /* ---------- Booking form (guest details + liability waiver) ---------- */
+  .booking-panel {
+    margin-top: var(--space-3); background: var(--bg-panel); border: 1px solid var(--line-strong);
+    border-radius: var(--radius); padding: var(--space-3);
+    display: flex; flex-direction: column; gap: var(--space-3);
+  }
+  .booking-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; }
+  .booking-head h3 { font-size: var(--fs-md); }
+  .booking-summary { font-size: var(--fs-xs); color: var(--text-soft); }
+  .fine-print.tight { margin-top: 0; }
+  .fieldset-legend {
+    font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); border-top: 1px solid var(--line); padding-top: var(--space-2); margin-top: var(--space-1);
+  }
+  .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2) var(--space-3); }
+  .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .field.full { grid-column: 1 / -1; }
+  .field label, .field .label { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); }
+  .req { color: var(--warn); }
+  .field input, .field textarea {
+    background: var(--bg); border: 1px solid var(--line-strong); border-radius: var(--radius);
+    padding: 0.55rem 0.7rem; color: var(--text); resize: vertical; width: 100%;
+  }
+  .field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--warn); }
+  .field-error { font-size: var(--fs-xs); color: var(--warn); }
+  .field-error:empty { display: none; }
+  .waiver-box {
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: var(--space-2) var(--space-3); max-height: 12rem; overflow-y: auto;
+    font-size: var(--fs-sm); display: flex; flex-direction: column; gap: var(--space-2);
+  }
+  .waiver-box h4 { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft); margin: 0; font-weight: 700; }
+  .waiver-specimen {
+    font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--warn); line-height: 1.5;
+    border: 1px dashed var(--warn); border-radius: var(--radius); padding: 0.5rem 0.7rem;
+  }
+  .consent-row { display: flex; gap: var(--space-2); align-items: flex-start; font-size: var(--fs-sm); }
+  .consent-row input { margin-top: 0.3rem; width: 1rem; height: 1rem; flex-shrink: 0; }
+  .consent-row label { font-size: var(--fs-sm); text-transform: none; letter-spacing: 0; color: var(--text); }
+  .booking-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
+  .form-summary-error { font-size: var(--fs-sm); color: var(--warn); font-weight: 600; }
+  .form-summary-error:empty { display: none; }
+
+  /* ---------- Staff view ---------- */
+  .admin-stats { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-3); }
+  .admin-stat {
+    background: var(--bg-panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: var(--space-2) var(--space-3); display: flex; flex-direction: column; gap: 2px; min-width: 8rem;
+  }
+  .admin-stat .label { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); }
+  .admin-stat .value { font-family: var(--font-mono); font-size: var(--fs-lg); }
+  .booking-row {
+    background: var(--bg-panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: var(--space-3); margin-bottom: var(--space-2); display: flex; flex-direction: column; gap: var(--space-2);
+  }
+  .booking-row.flagged { border-color: var(--warn); }
+  .row-head { display: flex; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; align-items: baseline; }
+  .row-ref { font-family: var(--font-display); font-size: var(--fs-md); }
+  .row-meta { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-soft); }
+  .badge {
+    font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.06em; white-space: nowrap;
+    border: 1px solid currentColor; border-radius: 999px; padding: 0.1rem 0.6rem;
+  }
+  .badge-pending { color: var(--warn); }
+  .badge-confirmed { color: var(--accent); }
+  .badge-cancelled { color: var(--text-soft); }
+  .flag-list { display: flex; flex-direction: column; gap: 2px; font-size: var(--fs-xs); color: var(--warn); }
+  .row-detail { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: var(--space-2); }
+  .row-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: var(--space-2); }
+  .btn-sm { padding: 0.4rem 0.85rem; font-size: var(--fs-xs); }
+  .admin-empty { color: var(--text-soft); font-size: var(--fs-sm); padding: var(--space-2) 0; }
+  .sitefoot-actions { display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; flex-shrink: 0; }
+  .staff-link {
+    background: none; border: none; padding: 0.5rem 0; cursor: pointer;
+    font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-soft);
+    text-decoration: underline; text-underline-offset: 3px; white-space: nowrap;
+  }
+  .staff-link:hover { color: var(--accent); }
+
   .toast {
     position: fixed; left: 50%; bottom: var(--space-4); transform: translate(-50%, 12px);
     background: var(--ink); color: var(--paper); padding: 0.8rem 1.2rem; border-radius: var(--radius);
@@ -283,6 +362,7 @@
   .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
   @media (max-width: 720px) {
+    .field-grid { grid-template-columns: 1fr; }
     .legend-row { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .manifest-body { gap: var(--space-3); }
@@ -416,6 +496,88 @@
       </article>
 
       <p class="fine-print">Pricing shown is illustrative for this preview. Reservations above are a live in-browser simulation of the capacity and snorkel-gear gating only — not connected to a real payment or booking engine; production wires this to the chosen SaaS booking platform (FareHarbor / Checkfront / Rezdy / TripWorks).</p>
+
+      <div class="booking-panel" id="bookingPanel" hidden>
+        <div class="booking-head">
+          <h3>Booking details</h3>
+          <span class="booking-summary mono" id="bookingSummary"></span>
+        </div>
+        <p class="fine-print tight">Every guest going on the water must be named, and the lead booker signs the liability waiver on behalf of the party. The production build collects a separately signed waiver per participant.</p>
+
+        <p class="fieldset-legend">Guests on this sailing</p>
+        <div class="field-grid" id="guestFields"></div>
+
+        <p class="fieldset-legend">Lead booker</p>
+        <div class="field-grid">
+          <div class="field">
+            <label for="leadName">Full name <span class="req">*</span></label>
+            <input type="text" id="leadName" autocomplete="name">
+            <span class="field-error" data-error-for="leadName"></span>
+          </div>
+          <div class="field">
+            <label for="leadEmail">Email <span class="req">*</span></label>
+            <input type="email" id="leadEmail" autocomplete="email">
+            <span class="field-error" data-error-for="leadEmail"></span>
+          </div>
+          <div class="field">
+            <label for="leadPhone">Phone <span class="req">*</span></label>
+            <input type="tel" id="leadPhone" autocomplete="tel">
+            <span class="field-error" data-error-for="leadPhone"></span>
+          </div>
+          <div class="field">
+            <label for="swimAbility">Swimming ability <span class="req">*</span></label>
+            <input type="text" id="swimAbility" placeholder="e.g. confident / weak / non-swimmer">
+            <span class="field-error" data-error-for="swimAbility"></span>
+          </div>
+          <div class="field">
+            <label for="emergencyName">Emergency contact name <span class="req">*</span></label>
+            <input type="text" id="emergencyName">
+            <span class="field-error" data-error-for="emergencyName"></span>
+          </div>
+          <div class="field">
+            <label for="emergencyPhone">Emergency contact phone <span class="req">*</span></label>
+            <input type="tel" id="emergencyPhone">
+            <span class="field-error" data-error-for="emergencyPhone"></span>
+          </div>
+          <div class="field full">
+            <label for="medicalNotes">Medical conditions or notes (optional)</label>
+            <textarea id="medicalNotes" rows="2" placeholder="Anything the crew should know before you board"></textarea>
+          </div>
+        </div>
+
+        <p class="fieldset-legend">Liability waiver</p>
+        <div class="waiver-box" id="waiverBox" tabindex="0" role="region" aria-label="Liability waiver text">
+          <p class="waiver-specimen">SPECIMEN TEXT — PLACEHOLDER ONLY. The Sea Lounge's real waiver must be supplied by their insurer or attorney and dropped in before launch. Nothing below has been drafted or reviewed as a legal document.</p>
+          <h4>Acknowledgement of risk</h4>
+          <p>I understand that snorkelling and boat excursions carry inherent risks, including changing sea and weather conditions, boat traffic, marine life, and the possibility of injury or drowning.</p>
+          <h4>Accuracy of disclosure</h4>
+          <p>I confirm the swimming ability and medical information given above is accurate for every guest named on this booking, and that no named guest will be under the influence of alcohol or drugs at the time of the activity.</p>
+          <h4>Crew instructions and equipment</h4>
+          <p>I agree to follow all safety briefings and crew instructions, and to properly wear the flotation and snorkel equipment provided.</p>
+          <h4>Responsibility for the party</h4>
+          <p>I accept responsibility for myself and for any minors in my party, and I sign this on behalf of every guest named on this booking.</p>
+        </div>
+
+        <div class="consent-row">
+          <input type="checkbox" id="waiverAgree">
+          <label for="waiverAgree">I have read the liability waiver above and accept it on behalf of every guest named on this booking. <span class="req">*</span></label>
+        </div>
+        <span class="field-error" data-error-for="waiverAgree"></span>
+
+        <div class="field">
+          <label for="waiverSignature">Type your full name to sign <span class="req">*</span></label>
+          <input type="text" id="waiverSignature" placeholder="Must match the lead booker name exactly">
+          <span class="field-error" data-error-for="waiverSignature"></span>
+        </div>
+
+        <p class="form-summary-error" id="bookingFormError" role="alert"></p>
+
+        <div class="booking-actions">
+          <button class="btn btn-accent" id="submitBookingBtn" type="button">Hold this sailing</button>
+          <button class="btn btn-ghost" id="cancelBookingBtn" type="button">Cancel</button>
+        </div>
+        <p class="fine-print tight">Nothing is charged here. The sailing is held while the crew checks your details, then confirms — you can watch that happen in the staff view linked at the foot of this page.</p>
+      </div>
     </section>
 
     <section class="page" id="page-menu" data-page="menu" hidden>
@@ -525,12 +687,31 @@
       </div>
     </section>
 
+    <section class="page" id="page-admin" data-page="admin" hidden>
+      <div class="page-head">
+        <p class="eyebrow">Staff View</p>
+        <h2>Bookings &amp; Waivers</h2>
+        <p class="page-intro">Everything a guest submits lands here for the crew to check, correct, and confirm before the sailing. Rows outlined in amber have something that needs attention — a booking cannot be confirmed until they are cleared.</p>
+      </div>
+
+      <div class="admin-stats" id="adminStats"></div>
+      <div id="adminBookings"></div>
+
+      <p class="fieldset-legend">Kitchen order</p>
+      <div id="adminOrders"></div>
+
+      <p class="fine-print">This staff view is deliberately unauthenticated in the preview so it can be demonstrated — anyone with the link can open it. Production puts it behind a real staff login with per-user permissions and an audit trail of who edited what; the chosen booking platform supplies most of that. Guest details entered in this preview never leave your browser.</p>
+    </section>
+
   </main>
 
   <footer class="sitefoot">
     <div class="sitefoot-row">
-      <p>Preview build for The Sea Lounge — content, pricing, and imagery are placeholders pending branding and kickoff. Tour capacity and the payment-before-kitchen flow are live in-browser simulations for this demo only: nothing is a real payment, no booking or order leaves your browser, and state is saved to this browser's local storage so it survives a reload.</p>
-      <button class="btn btn-ghost btn-reset" id="resetDemoBtn" type="button">&#8635; Reset demo</button>
+      <p>Preview build for The Sea Lounge — content, pricing, and imagery are placeholders pending branding and kickoff, and the liability waiver is specimen text, not a legal document. Tour capacity, the waiver step, and the payment-before-kitchen flow are live in-browser simulations for this demo only: nothing is a real payment, no booking, waiver, or order leaves your browser, and any guest details you type are saved only to this browser's local storage.</p>
+      <div class="sitefoot-actions">
+        <button class="staff-link" id="staffViewBtn" type="button">&#9875; Staff view</button>
+        <button class="btn btn-ghost btn-reset" id="resetDemoBtn" type="button">&#8635; Reset demo</button>
+      </div>
     </div>
   </footer>
 </div>
@@ -588,7 +769,9 @@
         sunset: { '5:30 PM': { reserved: 3 } }
       },
       cart: {},
-      ticket: null
+      ticket: null,
+      bookings: [],
+      bookingSeq: 0
     };
   }
   function loadState() {
@@ -608,6 +791,8 @@
       }
       if (parsed && parsed.cart) d.cart = parsed.cart;
       if (parsed && parsed.ticket !== undefined) d.ticket = parsed.ticket;
+      if (parsed && Array.isArray(parsed.bookings)) d.bookings = parsed.bookings;
+      if (parsed && typeof parsed.bookingSeq === 'number') d.bookingSeq = parsed.bookingSeq;
     } catch (e) { /* ignore corrupt storage, fall back to defaults */ }
     return d;
   }
@@ -679,13 +864,7 @@
       var remaining = meta.capacity - slotState.reserved;
       var guestQty = parseInt(guestQtyEl.textContent, 10) || 1;
       if (remaining <= 0 || guestQty > remaining) { renderTourCard(tourKey); return; }
-      slotState.reserved += guestQty;
-      saveState();
-      guestQtyEl.textContent = '1';
-      renderTourCard(tourKey);
-      var newRemaining = meta.capacity - slotState.reserved;
-      var unit = newRemaining === 1 ? meta.unitSingular : meta.unitPlural;
-      showToast('Reserved ' + guestQty + (guestQty === 1 ? ' spot' : ' spots') + ' on the ' + slotName + ' ' + meta.label + ' — ' + newRemaining + ' ' + unit + ' left.');
+      openBookingForm(tourKey, slotName, guestQty);
     });
 
     renderTourCard(tourKey);
@@ -807,6 +986,324 @@
 
   renderTicket();
 
+  // ---- booking form: required guest details + liability waiver ----
+  var bookingPanel = document.getElementById('bookingPanel');
+  var bookingSummaryEl = document.getElementById('bookingSummary');
+  var guestFieldsEl = document.getElementById('guestFields');
+  var bookingFormErrorEl = document.getElementById('bookingFormError');
+  var LEAD_FIELDS = ['leadName', 'leadEmail', 'leadPhone', 'swimAbility', 'emergencyName', 'emergencyPhone'];
+  var pendingBooking = null;
+
+  function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v || ''); }
+  function digitCount(v) { return ((v || '').match(/\d/g) || []).length; }
+  function esc(v) { var d = document.createElement('div'); d.textContent = v == null ? '' : String(v); return d.innerHTML; }
+
+  function setFieldError(id, msg) {
+    var out = bookingPanel.querySelector('[data-error-for="' + id + '"]');
+    if (out) out.textContent = msg || '';
+    var input = document.getElementById(id);
+    if (input && input.type !== 'checkbox') {
+      if (msg) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    }
+  }
+  function clearBookingErrors() {
+    bookingPanel.querySelectorAll('[data-error-for]').forEach(function (el) { el.textContent = ''; });
+    bookingPanel.querySelectorAll('[aria-invalid]').forEach(function (el) { el.removeAttribute('aria-invalid'); });
+    bookingFormErrorEl.textContent = '';
+  }
+
+  function openBookingForm(tourKey, slotName, guests) {
+    var meta = TOUR_META[tourKey];
+    pendingBooking = { tourKey: tourKey, slotName: slotName, guests: guests };
+    bookingSummaryEl.textContent = meta.label + ' · ' + slotName + ' · ' + guests + (guests === 1 ? ' guest' : ' guests');
+    guestFieldsEl.innerHTML = '';
+    for (var i = 0; i < guests; i++) {
+      var wrap = document.createElement('div');
+      wrap.className = 'field';
+      var id = 'guestName' + i;
+      var label = document.createElement('label');
+      label.setAttribute('for', id);
+      label.innerHTML = 'Guest ' + (i + 1) + ' full name <span class="req">*</span>';
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.id = id;
+      input.setAttribute('data-guest-index', String(i));
+      var err = document.createElement('span');
+      err.className = 'field-error';
+      err.setAttribute('data-error-for', id);
+      wrap.appendChild(label); wrap.appendChild(input); wrap.appendChild(err);
+      guestFieldsEl.appendChild(wrap);
+    }
+    LEAD_FIELDS.forEach(function (id) { document.getElementById(id).value = ''; });
+    document.getElementById('medicalNotes').value = '';
+    document.getElementById('waiverAgree').checked = false;
+    document.getElementById('waiverSignature').value = '';
+    clearBookingErrors();
+    bookingPanel.hidden = false;
+    bookingPanel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+    var first = document.getElementById('guestName0');
+    if (first) first.focus();
+  }
+
+  function closeBookingForm() {
+    pendingBooking = null;
+    if (bookingPanel) bookingPanel.hidden = true;
+  }
+
+  function validateBookingForm() {
+    clearBookingErrors();
+    var problems = 0;
+    var guestNames = [];
+    guestFieldsEl.querySelectorAll('[data-guest-index]').forEach(function (input) {
+      var v = input.value.trim();
+      guestNames.push(v);
+      if (!v) { setFieldError(input.id, 'Required — everyone going on the water must be named.'); problems++; }
+    });
+    var lead = document.getElementById('leadName').value.trim();
+    if (!lead) { setFieldError('leadName', 'Required.'); problems++; }
+    var email = document.getElementById('leadEmail').value.trim();
+    if (!email) { setFieldError('leadEmail', 'Required.'); problems++; }
+    else if (!isEmail(email)) { setFieldError('leadEmail', 'That does not look like an email address.'); problems++; }
+    var phone = document.getElementById('leadPhone').value.trim();
+    if (!phone) { setFieldError('leadPhone', 'Required.'); problems++; }
+    else if (digitCount(phone) < 7) { setFieldError('leadPhone', 'Needs at least 7 digits.'); problems++; }
+    var swim = document.getElementById('swimAbility').value.trim();
+    if (!swim) { setFieldError('swimAbility', 'Required — the crew sizes flotation on this.'); problems++; }
+    var eName = document.getElementById('emergencyName').value.trim();
+    if (!eName) { setFieldError('emergencyName', 'Required.'); problems++; }
+    var ePhone = document.getElementById('emergencyPhone').value.trim();
+    if (!ePhone) { setFieldError('emergencyPhone', 'Required.'); problems++; }
+    else if (digitCount(ePhone) < 7) { setFieldError('emergencyPhone', 'Needs at least 7 digits.'); problems++; }
+    else if (phone && ePhone.replace(/\D/g, '') === phone.replace(/\D/g, '')) {
+      setFieldError('emergencyPhone', 'Cannot be the same number as the lead booker.'); problems++;
+    }
+    if (!document.getElementById('waiverAgree').checked) {
+      setFieldError('waiverAgree', 'The waiver must be accepted before a sailing can be held.'); problems++;
+    }
+    var sig = document.getElementById('waiverSignature').value.trim();
+    if (!sig) { setFieldError('waiverSignature', 'Type your name to sign.'); problems++; }
+    else if (lead && sig.toLowerCase() !== lead.toLowerCase()) {
+      setFieldError('waiverSignature', 'Signature must match the lead booker name exactly.'); problems++;
+    }
+    if (problems) {
+      bookingFormErrorEl.textContent = problems === 1
+        ? '1 item needs fixing before this sailing can be held.'
+        : problems + ' items need fixing before this sailing can be held.';
+      return null;
+    }
+    return {
+      guestNames: guestNames,
+      lead: { name: lead, email: email, phone: phone },
+      emergency: { name: eName, phone: ePhone },
+      swimAbility: swim,
+      medical: document.getElementById('medicalNotes').value.trim(),
+      signature: sig
+    };
+  }
+
+  document.getElementById('submitBookingBtn').addEventListener('click', function () {
+    if (!pendingBooking) return;
+    var data = validateBookingForm();
+    if (!data) {
+      var bad = bookingPanel.querySelector('[aria-invalid="true"]');
+      if (!bad && !document.getElementById('waiverAgree').checked) bad = document.getElementById('waiverAgree');
+      if (bad) bad.focus();
+      return;
+    }
+    var tourKey = pendingBooking.tourKey, slotName = pendingBooking.slotName, guests = pendingBooking.guests;
+    var meta = TOUR_META[tourKey];
+    var slotState = state.tours[tourKey][slotName];
+    var remaining = meta.capacity - slotState.reserved;
+    if (guests > remaining) {
+      bookingFormErrorEl.textContent = 'This sailing filled up while the form was open — only ' + remaining + ' left. Close this and pick another departure.';
+      renderTourCard(tourKey);
+      return;
+    }
+    state.bookingSeq += 1;
+    slotState.reserved += guests;
+    var ref = 'SL-' + ('000' + state.bookingSeq).slice(-4);
+    state.bookings.push({
+      ref: ref, tour: tourKey, tourLabel: meta.label, slot: slotName, guests: guests,
+      guestNames: data.guestNames, lead: data.lead, emergency: data.emergency,
+      swimAbility: data.swimAbility, medical: data.medical,
+      waiver: { agreed: true, signature: data.signature, signedAt: Date.now() },
+      status: 'pending', adminNote: '', createdAt: Date.now()
+    });
+    saveState();
+    closeBookingForm();
+    var card = document.querySelector('.manifest-card[data-tour="' + tourKey + '"]');
+    card.querySelector('[data-guest-qty]').textContent = '1';
+    renderTourCard(tourKey);
+    renderAdmin();
+    showToast(ref + ' held for crew review — waiver signed by ' + data.lead.name + '.');
+  });
+
+  document.getElementById('cancelBookingBtn').addEventListener('click', function () {
+    closeBookingForm();
+    showToast('Booking form closed — nothing was held.');
+  });
+
+  // ---- staff view: validate, edit, and confirm what guests submitted ----
+  var adminStatsEl = document.getElementById('adminStats');
+  var adminBookingsEl = document.getElementById('adminBookings');
+  var adminOrdersEl = document.getElementById('adminOrders');
+
+  function bookingFlags(b) {
+    var flags = [];
+    if (!b.waiver || !b.waiver.agreed) flags.push('Waiver not accepted.');
+    else if (b.waiver.signature && b.lead && b.waiver.signature.toLowerCase() !== (b.lead.name || '').toLowerCase()) {
+      flags.push('Waiver signature no longer matches the lead booker name.');
+    }
+    if (!isEmail(b.lead && b.lead.email)) flags.push('Email address is missing or malformed.');
+    if (digitCount(b.lead && b.lead.phone) < 7) flags.push('Lead phone number is incomplete.');
+    if (!b.emergency || !b.emergency.name) flags.push('Emergency contact name is missing.');
+    else if (digitCount(b.emergency.phone) < 7) flags.push('Emergency contact phone is incomplete.');
+    var named = (b.guestNames || []).filter(function (n) { return n && n.trim(); }).length;
+    if (named < b.guests) flags.push(named + ' of ' + b.guests + ' guests named.');
+    if (!b.swimAbility) flags.push('Swimming ability not recorded.');
+    return flags;
+  }
+
+  function statTile(label, value) {
+    return '<div class="admin-stat"><span class="label">' + esc(label) + '</span><span class="value">' + esc(value) + '</span></div>';
+  }
+
+  function adminField(label, field, value) {
+    return '<div class="field"><span class="label">' + esc(label) + '</span>' +
+           '<input type="text" data-field="' + esc(field) + '" value="' + esc(value) + '"></div>';
+  }
+
+  function renderBookingRow(b) {
+    var flags = bookingFlags(b);
+    var flagged = b.status !== 'cancelled' && flags.length > 0;
+    var stamp = new Date(b.createdAt).toISOString().slice(0, 16).replace('T', ' ');
+    var guestInputs = (b.guestNames || []).map(function (n, i) {
+      return adminField('Guest ' + (i + 1), 'guest' + i, n);
+    }).join('');
+    return '<div class="booking-row' + (flagged ? ' flagged' : '') + '" data-ref="' + esc(b.ref) + '">' +
+        '<div class="row-head">' +
+          '<span class="row-ref">' + esc(b.ref) + ' · ' + esc(b.tourLabel) + ' · ' + esc(b.slot) + ' · ' + esc(b.guests) + (b.guests === 1 ? ' guest' : ' guests') + '</span>' +
+          '<span class="badge badge-' + esc(b.status) + '">' + esc(b.status.toUpperCase()) + '</span>' +
+        '</div>' +
+        '<span class="row-meta">Submitted ' + esc(stamp) + ' UTC · waiver signed &ldquo;' + esc(b.waiver && b.waiver.signature) + '&rdquo;</span>' +
+        (flags.length ? '<div class="flag-list">' + flags.map(function (f) { return '<span>&#9888; ' + esc(f) + '</span>'; }).join('') + '</div>' : '') +
+        '<div class="row-detail">' +
+          guestInputs +
+          adminField('Lead booker', 'leadName', b.lead.name) +
+          adminField('Email', 'leadEmail', b.lead.email) +
+          adminField('Phone', 'leadPhone', b.lead.phone) +
+          adminField('Swimming ability', 'swimAbility', b.swimAbility) +
+          adminField('Emergency name', 'emergencyName', b.emergency.name) +
+          adminField('Emergency phone', 'emergencyPhone', b.emergency.phone) +
+          adminField('Medical notes', 'medical', b.medical) +
+          adminField('Crew note', 'adminNote', b.adminNote) +
+        '</div>' +
+        '<div class="row-actions">' +
+          '<button class="btn btn-ghost btn-sm" type="button" data-action="save">Save edits</button>' +
+          (b.status === 'pending' ? '<button class="btn btn-accent btn-sm" type="button" data-action="confirm">Confirm booking</button>' : '') +
+          (b.status !== 'cancelled' ? '<button class="btn btn-ghost btn-sm" type="button" data-action="cancel">Cancel &amp; release spots</button>' : '') +
+        '</div>' +
+      '</div>';
+  }
+
+  function renderAdmin() {
+    if (!adminStatsEl) return;
+    var bookings = state.bookings || [];
+    var pending = 0, confirmed = 0, cancelled = 0, flagged = 0, guests = 0;
+    bookings.forEach(function (b) {
+      if (b.status === 'pending') pending++;
+      else if (b.status === 'confirmed') confirmed++;
+      else if (b.status === 'cancelled') cancelled++;
+      if (b.status !== 'cancelled') {
+        guests += b.guests;
+        if (bookingFlags(b).length) flagged++;
+      }
+    });
+    adminStatsEl.innerHTML = statTile('Awaiting review', pending) + statTile('Confirmed', confirmed) +
+      statTile('Needs attention', flagged) + statTile('Guests booked', guests) + statTile('Cancelled', cancelled);
+
+    adminBookingsEl.innerHTML = bookings.length
+      ? bookings.slice().reverse().map(renderBookingRow).join('')
+      : '<p class="admin-empty">No booking requests yet — reserve a sailing on the Tours page and it will land here for review.</p>';
+
+    var t = state.ticket;
+    adminOrdersEl.innerHTML = !t
+      ? '<p class="admin-empty">No kitchen order in progress.</p>'
+      : '<div class="booking-row"><div class="row-head">' +
+          '<span class="row-ref">Current order &mdash; $' + t.total.toFixed(2) + '</span>' +
+          '<span class="badge ' + (t.status === 'paid' ? 'badge-confirmed' : 'badge-pending') + '">' +
+          (t.status === 'paid' ? 'PAID &middot; SENT TO KITCHEN' : 'AWAITING PAYMENT') + '</span></div>' +
+          '<span class="row-meta">' + t.items.map(function (i) { return esc(i.qty + '× ' + i.name); }).join(' &middot; ') + '</span></div>';
+  }
+
+  adminBookingsEl.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('[data-action]') : null;
+    if (!btn) return;
+    var row = btn.closest('.booking-row');
+    var ref = row.getAttribute('data-ref');
+    var b = (state.bookings || []).filter(function (x) { return x.ref === ref; })[0];
+    if (!b) return;
+    var action = btn.getAttribute('data-action');
+
+    if (action === 'save') {
+      row.querySelectorAll('[data-field]').forEach(function (input) {
+        var f = input.getAttribute('data-field');
+        var v = input.value.trim();
+        var m = /^guest(\d+)$/.exec(f);
+        if (m) { b.guestNames[parseInt(m[1], 10)] = v; return; }
+        if (f === 'leadName') b.lead.name = v;
+        else if (f === 'leadEmail') b.lead.email = v;
+        else if (f === 'leadPhone') b.lead.phone = v;
+        else if (f === 'swimAbility') b.swimAbility = v;
+        else if (f === 'emergencyName') b.emergency.name = v;
+        else if (f === 'emergencyPhone') b.emergency.phone = v;
+        else if (f === 'medical') b.medical = v;
+        else if (f === 'adminNote') b.adminNote = v;
+      });
+      saveState();
+      renderAdmin();
+      var left = bookingFlags(b).length;
+      showToast(left ? 'Saved ' + ref + ' — ' + left + ' item' + (left === 1 ? '' : 's') + ' still flagged.' : 'Saved ' + ref + ' — all checks pass, ready to confirm.');
+      return;
+    }
+
+    if (action === 'confirm') {
+      if (b.status !== 'pending') {
+        // Cancelled is terminal: confirming one would mark it booked while its
+        // spots have already gone back to the sailing — a phantom overbooking.
+        showToast(ref + ' is ' + b.status + ' — only a pending request can be confirmed. The guest needs to book again.');
+        return;
+      }
+      var problems = bookingFlags(b);
+      if (problems.length) {
+        showToast('Cannot confirm ' + ref + ' — ' + problems.length + ' item' + (problems.length === 1 ? '' : 's') + ' still flagged. Fix the details and save first.');
+        return;
+      }
+      b.status = 'confirmed';
+      saveState();
+      renderAdmin();
+      showToast(ref + ' confirmed — the guest would be emailed their booking at this point.');
+      return;
+    }
+
+    if (action === 'cancel' && b.status !== 'cancelled') {
+      var slot = state.tours[b.tour] && state.tours[b.tour][b.slot];
+      if (slot) slot.reserved = Math.max(0, slot.reserved - b.guests);
+      b.status = 'cancelled';
+      saveState();
+      renderTourCard(b.tour);
+      renderAdmin();
+      showToast(ref + ' cancelled — ' + b.guests + (b.guests === 1 ? ' spot' : ' spots') + ' released back to the ' + b.slot + ' sailing.');
+    }
+  });
+
+  document.getElementById('staffViewBtn').addEventListener('click', function () {
+    renderAdmin();
+    gotoPage('admin');
+  });
+
+  renderAdmin();
+
   // ---- reset demo ----
   document.getElementById('resetDemoBtn').addEventListener('click', function () {
     state = defaultState();
@@ -820,7 +1317,9 @@
     menuItems.forEach(function (item) { item.querySelector('.qty').textContent = '0'; });
     renderTotal();
     renderTicket();
-    showToast('Demo reset — all bookings and orders cleared.');
+    closeBookingForm();
+    renderAdmin();
+    showToast('Demo reset — all bookings, waivers, and orders cleared.');
   });
 
   // ---- contact form ----
