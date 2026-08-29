@@ -166,7 +166,7 @@
   .btn-accent { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
   .btn-ghost { background: transparent; }
 
-  .legend-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-top: var(--space-5); }
+  .legend-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--space-3); margin-top: var(--space-5); }
   .legend-card {
     display: flex; flex-direction: column; gap: var(--space-1); align-items: flex-start; text-align: left;
     background: var(--bg-panel); border: 1px solid var(--line); border-radius: var(--radius);
@@ -329,6 +329,22 @@
     .menu-thumb { width: 3.5rem; height: 3.5rem; }
   }
 
+  /* ---------- Destinations ---------- */
+  .dest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: var(--space-3); }
+  .dest-card {
+    background: var(--bg-panel); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .dest-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .dest-media { aspect-ratio: 3 / 2; background: var(--bg-panel-2); overflow: hidden; }
+  .dest-media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .dest-card:hover .dest-media img { transform: scale(1.04); }
+  .dest-body { padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-1); }
+  .dest-body h3 { font-size: var(--fs-md); }
+  .dest-meta { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.08em; color: var(--accent); }
+  .dest-desc { font-size: var(--fs-sm); color: var(--text-soft); }
+
   /* ---------- Booking form (guest details + liability waiver) ---------- */
   .booking-panel {
     margin-top: var(--space-3); background: var(--bg-panel); border: 1px solid var(--line-strong);
@@ -419,6 +435,7 @@
   @media (max-width: 720px) {
     .field-grid { grid-template-columns: 1fr; }
     .legend-row { grid-template-columns: 1fr; }
+    .dest-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .manifest-body { gap: var(--space-3); }
     .app { padding: 0 var(--space-3); }
@@ -434,6 +451,7 @@
     <div class="navlinks" role="tablist" aria-label="Site sections">
       <button class="navlink active" data-page="home" role="tab" aria-selected="true">Home</button>
       <button class="navlink" data-page="tours" role="tab" aria-selected="false">Tours</button>
+      <button class="navlink" data-page="destinations" role="tab" aria-selected="false">Destinations</button>
       <button class="navlink" data-page="menu" role="tab" aria-selected="false">Menu</button>
       <button class="navlink" data-page="about" role="tab" aria-selected="false">About</button>
       <button class="navlink" data-page="contact" role="tab" aria-selected="false">Contact</button>
@@ -449,7 +467,7 @@
         <canvas class="chart-canvas" id="chartCanvas" aria-hidden="true"></canvas>
         <div class="hero-content">
         <p class="eyebrow">Watersports · Bar &amp; Grill</p>
-        <h1 class="hero-title">Snorkel the reef.<br>Cruise the sunset.<br>Eat where you dock.</h1>
+        <h1 class="hero-title">Swim with the stingrays.<br>Cruise the sunset.<br>Eat where you dock.</h1>
         <p class="hero-sub">A watersports bar &amp; grill on North Sound — tours by day, dockside lunch always, sunset cruises when the light turns gold. Built for visitors chasing the reef and locals who just want a table on the water.</p>
         <div class="hero-actions">
           <button class="btn btn-accent" data-goto="tours">Reserve a Tour</button>
@@ -468,6 +486,11 @@
           <span class="legend-label">Dockside Lunch</span>
           <span class="legend-note">Served daily · order ahead for pickup</span>
         </button>
+        <button class="legend-card" data-goto="destinations">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span class="legend-label">Where We Go</span>
+          <span class="legend-note">Stingray City · Starfish Point · Rum Point</span>
+        </button>
         <button class="legend-card" data-goto="contact">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-4 4-2 5 4-4 2-5z"/></svg>
           <span class="legend-label">Find Us</span>
@@ -480,13 +503,13 @@
       <div class="page-head">
         <p class="eyebrow">Ship's Manifest</p>
         <h2>Today's Sailings</h2>
-        <p class="page-intro">Two ways out onto the Sound. Capacity shown is live, per sailing — reserve a slot below and watch it drop. On the snorkel tour, the hard limit is the 6 sets of gear aboard, not seats.</p>
+        <p class="page-intro">Two ways out onto the Sound, calling at the stops on the <strong>Destinations</strong> page. Capacity shown is live, per sailing — reserve a slot below and watch it drop. On the snorkel tour, the hard limit is the 6 sets of gear aboard, not seats.</p>
       </div>
 
       <article class="manifest-card" data-tour="snorkel">
         <div class="card-media"><img src="img/tour-snorkel.jpg" alt="A snorkeller finning over a shallow coral head on the barrier reef" loading="lazy" decoding="async"></div>
         <div class="manifest-head">
-          <h3>Snorkel Tour — Coral Gardens &amp; the Barrier Reef</h3>
+          <h3>Snorkel Tour — Stingray City &amp; Coral Gardens</h3>
           <p class="manifest-meta">2 HRS · DEPARTS 9:00 AM &amp; 1:00 PM</p>
         </div>
         <div class="manifest-body">
@@ -641,6 +664,60 @@
       </div>
     </section>
 
+
+    <section class="page" id="page-destinations" data-page="destinations" hidden>
+      <div class="page-head">
+        <p class="eyebrow">Where We Go</p>
+        <h2>Stops on the Sound</h2>
+        <p class="page-intro">Every charter is built out of these. Tell us which ones matter to you when you book and we&rsquo;ll shape the run around them — most days are three stops, and the boat is small enough to change plan when the weather says so.</p>
+      </div>
+
+      <div class="dest-grid">
+        <article class="dest-card">
+          <div class="dest-media"><img src="img/dest-stingray.jpg" alt="Stingrays gliding over pale sand in clear, waist-deep water" loading="lazy" decoding="async"></div>
+          <div class="dest-body">
+            <h3>Stingray City &amp; the Sandbar</h3>
+            <p class="dest-meta">NORTH SOUND · WAIST-DEEP · SUITS EVERYONE</p>
+            <p class="dest-desc">A sandbar in the middle of the Sound where southern stingrays have gathered for generations — the habit started with fishermen cleaning their catch here on the way in. You stand on the sand rather than swim, which makes it the one stop that works for everybody aboard, confident swimmer or not.</p>
+          </div>
+        </article>
+        <article class="dest-card">
+          <div class="dest-media"><img src="img/dest-coral.jpg" alt="A shallow coral head surrounded by reef fish in bright sunlight" loading="lazy" decoding="async"></div>
+          <div class="dest-body">
+            <h3>Coral Gardens</h3>
+            <p class="dest-meta">MINUTES FROM THE SANDBAR · SHALLOW</p>
+            <p class="dest-desc">Barely any deeper than the Sandbar and usually just as calm. Soft coral, sergeant majors and the odd parrotfish, sheltered enough that first-time snorkellers get their heads down within a minute of going in.</p>
+          </div>
+        </article>
+        <article class="dest-card">
+          <div class="dest-media"><img src="img/dest-starfish.jpg" alt="A sea star resting on rippled sand under clear shallow water" loading="lazy" decoding="async"></div>
+          <div class="dest-body">
+            <h3>Starfish Point</h3>
+            <p class="dest-meta">NORTH SHORE · ANKLE-DEEP · WALK IN</p>
+            <p class="dest-desc">A quiet stretch of the north shore where red cushion sea stars sit in ankle-deep water. Look at them, photograph them, and leave them exactly where they are — lifting one out of the water can kill it, and our crew will ask you not to.</p>
+          </div>
+        </article>
+        <article class="dest-card">
+          <div class="dest-media"><img src="img/dest-rumpoint.jpg" alt="A hammock slung between palms above a quiet stretch of sand" loading="lazy" decoding="async"></div>
+          <div class="dest-body">
+            <h3>Rum Point</h3>
+            <p class="dest-meta">ACROSS THE SOUND · BEACH STOP</p>
+            <p class="dest-desc">The north side’s easy afternoon: casuarina shade, hammocks, calm water straight off the sand, and a bar that has been pouring mudslides for decades. The natural second half of a day that started at the Sandbar.</p>
+          </div>
+        </article>
+        <article class="dest-card">
+          <div class="dest-media"><img src="img/dest-kaibo.jpg" alt="A palm-shaded waterfront with thatched roofs and moored boats" loading="lazy" decoding="async"></div>
+          <div class="dest-body">
+            <h3>Kaibo</h3>
+            <p class="dest-meta">NORTH SHORE · ARRIVE BY BOAT</p>
+            <p class="dest-desc">A short run along the shore from Rum Point. Beach bar down on the sand, a proper kitchen upstairs, and a dock built for people turning up by boat rather than by road — usually the last stop before the run home.</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="fine-print">These are public stops on North Sound, shared with every other charter on the water — we don&rsquo;t own them and neither does anyone else. Photographs on this page are licensed stock chosen to show what each stop is like; they are not taken at these locations, and the operator&rsquo;s own photography replaces them before launch.</p>
+    </section>
+
     <section class="page" id="page-menu" data-page="menu" hidden>
       <div class="page-head">
         <p class="eyebrow">Dockside Bill of Fare</p>
@@ -720,7 +797,7 @@
       </div>
       <div class="about-media"><img src="img/about-dock.jpg" alt="Small boats moored alongside a timber pier over clear shallow water" loading="lazy" decoding="async"></div>
       <div class="log-entry">
-        <p>The Sea Lounge sits on North Sound, Grand Cayman — half watersports outfit, half bar &amp; grill, built for the stretch of afternoon between a snorkel trip and a sunset cruise. We run the reef by day and keep the kitchen open for whoever's on the dock, tourist or local.</p>
+        <p>The Sea Lounge sits on North Sound, Grand Cayman — half watersports outfit, half bar &amp; grill, built for the stretch of afternoon between a snorkel trip and a sunset cruise. We run the Sandbar, the reef and the north shore by day and keep the kitchen open for whoever's on the dock, tourist or local.</p>
         <p>Two sailings, a small stack of snorkel gear, and a lunch menu built for pickup — that's the whole operation, kept simple on purpose.</p>
         <div class="particulars">
           <div><span class="label">Location</span><span class="value">North Sound, Grand Cayman</span></div>
